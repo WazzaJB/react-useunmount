@@ -10,7 +10,7 @@ When using a `useEffect` return function for handling component unmounting, stat
 
 This package is a super simple and minimal hook for storing an array of dependencies within a ref, making the data available on unmount - which is the effect function passed in as the first parameter.
 
-It accepts a function as the first parameter, which gets called on component unmount, and a dependecy array as the second parameter which is stored and passed back to the unmount function. Fundamentally it:
+It accepts a function as the first parameter, which gets called on component unmount, and a dependency array as the second parameter which is stored and passed back to the unmount function. Fundamentally it:
 
 - Creates a ref to store the required data in
 - Initiates a useEffect for when the dependencies change, which updates the ref
