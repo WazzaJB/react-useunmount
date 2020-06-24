@@ -2,7 +2,11 @@
 
 [![NPM](https://img.shields.io/npm/v/react-useunmount.svg)](https://www.npmjs.com/package/react-useunmount) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## What it does
+## The problem
+
+When using a `useEffect` return function for handling component unmounting, state is not available.
+
+## What this package does
 
 This package is a super simple and minimal hook for storing an array of dependencies within a ref, making the data available on unmount - which is the effect function passed in as the first parameter.
 
@@ -11,6 +15,10 @@ It accepts a function as the first parameter, which gets called on component unm
 - Creates a ref to store the required data in
 - Initiates a useEffect for when the dependencies change, which updates the ref
 - Initiates a useEffect for component unmount, which calls your unmount function with the dependency data passed back as the first argument
+
+The gif below showcases the problem, and that our custom `useUnmount` works. If you look at the console on component unmount, our custom hook contains the active state unlike the standard `useEffect`.
+
+![GIF showing why useUnmount is needed and that it works](example/example.gif)
 
 ## When might I need this?
 
@@ -38,6 +46,8 @@ or with yarn:
 yarn add react-useunmount
 ```
 
+The core code of this package is just 20 lines, so you may feel more comfortable copying the file `dist/index.js` into your own internal libraries. If you are using TypeScript, then you should copy `src/index.tsx` instead.
+
 ## Usage
 
 ```tsx
@@ -51,7 +61,7 @@ const Example = () => {
   useUnmount(
     // Destructure argument #1 into the same order as passed dependencies
     ([refState]) => {
-      console.log("State now available via ref", refState);
+      console.log("State now available via ref: ", refState);
     },
     [state]
   );
@@ -62,7 +72,7 @@ const Example = () => {
 
 ## Full Example
 
-Want to see a full working example showcasing how this works, and why a standard useEffect isn't enough? Clone this repository and:
+Want to see the full working example showcasing how this works, and why a standard useEffect isn't enough? Clone this repository and:
 
 ```bash
 cd example && yarn start

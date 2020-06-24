@@ -1,6 +1,6 @@
 {
   "name": "react-useunmount",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utilise state and other data on component unmount with minimal code.",
   "author": "WazzaJB",
   "license": "MIT",
