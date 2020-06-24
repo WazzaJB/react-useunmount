@@ -6,6 +6,10 @@
 
 When using a `useEffect` return function for handling component unmounting, state is not available.
 
+The gif below showcases the problem, and that our custom `useUnmount` works. If you look at the console on component unmount, our custom hook contains the active state unlike the standard `useEffect`. You can reproduce this below example your self by following the instructions at the bottom of this page "Full Example".
+
+![GIF showing why useUnmount is needed and that it works](example/example.gif)
+
 ## What this package does
 
 This package is a super simple and minimal hook for storing an array of dependencies within a ref, making the data available on unmount - which is the effect function passed in as the first parameter.
@@ -15,10 +19,6 @@ It accepts a function as the first parameter, which gets called on component unm
 - Creates a ref to store the required data in
 - Initiates a useEffect for when the dependencies change, which updates the ref
 - Initiates a useEffect for component unmount, which calls your unmount function with the dependency data passed back as the first argument
-
-The gif below showcases the problem, and that our custom `useUnmount` works. If you look at the console on component unmount, our custom hook contains the active state unlike the standard `useEffect`. You can reproduce this below example your self by following the instructions at the bottom of this page "Full Example".
-
-![GIF showing why useUnmount is needed and that it works](example/example.gif)
 
 ## When might I need this?
 
